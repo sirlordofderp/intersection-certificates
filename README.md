@@ -34,3 +34,7 @@ The script fetches the required Mathlib modules, builds with the pinned Lean 4.3
 ## Status and provenance
 
 This is an AI-assisted research note, open for mathematical review. Lean checked the listed theorem statements. The Python algorithms were differentially tested against exhaustive calculations. Independent peer review and historical priority remain open. The original motivation was the equality-side search for constructive SAT algorithms. The results give conditional algorithms and sharp information bounds, and general P versus NP remains open. [Attribution and licensing](PROVENANCE.md)
+
+## License
+
+The original research notes, Lean proofs, and Python code are licensed under the [Apache License, Version 2.0](LICENSE).

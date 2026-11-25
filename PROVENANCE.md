@@ -11,7 +11,7 @@ Two source files reproduce the upstream project's literal and CNF semantics and 
 - [PEqualNP/Defs/Search.lean](PEqualNP/Defs/Search.lean) and [PEqualNP/Defs/ProofComplexity.lean](PEqualNP/Defs/ProofComplexity.lean) come from [open-goat/pequalnp-proofs at cc5bff6](https://github.com/open-goat/pequalnp-proofs/tree/cc5bff61fdb650a4ecd82694aeffa0f790a01a60/lean/PEqualNP/Defs). Their [Apache 2.0 license](third-party/pequalnp-LICENSE) is included.
 - The package uses [Lean 4.36.0](https://github.com/leanprover/lean4/releases/tag/v4.36.0) and [Mathlib at fc4f59e](https://github.com/leanprover-community/mathlib4/tree/fc4f59e577feb1a4956671bc04ac18aaaf8cd842). The transitive dependency pins are recorded in [lake-manifest.json](lake-manifest.json).
 
-The maintainer has deferred choosing a license for the new research code and notes.
+The maintainer has licensed the original contributions in this repository under the [Apache License, Version 2.0](LICENSE). The third-party sources listed above retain their original attribution and license.
 
 ## Evidence and review
 
