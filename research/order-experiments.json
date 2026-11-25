@@ -3,6 +3,7 @@
   "exact_by_rounding_without_certificate": 182,
   "sharp_parity_pairs": 12,
   "block_moment_checks": 408,
+  "strict_chain_pairs": 10,
   "affine_160_variable_uncovered": [
     753586781748746817198774991869333432010090217472,
     730750818665451459101842416358141509827966271488

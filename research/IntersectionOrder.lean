@@ -3,6 +3,8 @@ import Mathlib.Algebra.BigOperators.Group.Finset.Powerset
 import Mathlib.Algebra.Order.Ring.Int
 import Mathlib.Algebra.Order.BigOperators.Group.Finset
 import Mathlib.Tactic.Ring
+import Mathlib.Data.Fin.Embedding
+import Mathlib.Data.Nat.Choose.Sum
 
 /-! Exact intersection orders for computing and recognizing short union identities.
     A population counts the points with each membership pattern. -/
@@ -482,5 +484,126 @@ theorem block_recognition_sharp (d t : ℕ) (ht : 0 < t) :
     ∃ μ ν : Population (2*d+1), BlockAgree ((2*d+1)*t-1) t μ ν ∧ HasDegree d μ ∧ ¬ HasDegree d ν := by
   obtain ⟨μ,ν,agree,ha,hb⟩ := recognition_sharp d
   exact ⟨μ,ν,(block_order_iff μ ν t _ ht).mpr (by rw [div_before _ _ (by omega) ht]; exact agree),ha,hb⟩
+
+/-- Aggregation discards the labels of the intersections of each fixed order. -/
+def layer (μ : Population m) (j : ℕ) : ℤ :=
+  ∑ T ∈ (univ : Row m).powersetCard j, moment μ T
+
+theorem layer_by_weight (μ : Population m) (j : ℕ) :
+    layer μ j = mass μ (fun s => s.card.choose j) := by
+  classical
+  unfold layer moment mass
+  rw [sum_comm]
+  apply sum_congr rfl
+  intro s _
+  rw [← mul_sum, ← sum_filter]
+  have he : ((univ : Row m).powersetCard j).filter (fun T => T ⊆ s) = s.powersetCard j := by
+    ext T
+    simp [and_comm]
+  simp [he,card_powersetCard]
+
+private def initial (s : Row m) : Row m :=
+  univ.map (Fin.castLEEmb (show s.card ≤ m by simpa using card_le_univ s))
+
+private theorem initial_card (s : Row m) : (initial s).card = s.card := by simp [initial]
+
+private theorem initial_mem (s : Row m) (i : Fin m) : i ∈ initial s ↔ i.val < s.card := by
+  constructor
+  · intro h
+    obtain ⟨j,_,rfl⟩ := mem_map.mp h
+    exact j.isLt
+  · intro h
+    exact mem_map.mpr ⟨⟨i.val,h⟩,mem_univ _,Fin.ext rfl⟩
+
+private def chainPop (μ : Population m) : Population m :=
+  fun s => ∑ x, if s = initial x then μ x else 0
+
+private theorem chain_mass (μ : Population m) (f : Row m → ℤ) :
+    mass (chainPop μ) f = mass μ (fun s => f (initial s)) := by
+  classical
+  simp only [mass,chainPop,Nat.cast_sum,Finset.sum_mul]
+  rw [Finset.sum_comm]
+  apply sum_congr rfl
+  intro x _
+  rw [sum_eq_single (initial x)]
+  · simp
+  · intro s _ hs
+    simp [hs]
+  · simp
+
+private theorem chain_layer (μ : Population m) (j : ℕ) : layer (chainPop μ) j = layer μ j := by
+  simp only [layer_by_weight, chain_mass, initial_card]
+
+private theorem chain_origin (μ : Population m) : chainPop μ ∅ = μ ∅ := by
+  unfold chainPop
+  rw [sum_eq_single (∅ : Row m)]
+  · have hi : initial (∅ : Row m) = ∅ := card_eq_zero.mp (by rw [initial_card]; rfl)
+    simp [hi]
+  · intro s _ hs
+    have hn : ∅ ≠ initial s := by
+      intro eq
+      have hc := congrArg card eq
+      simp only [card_empty,initial_card] at hc
+      exact hs (card_eq_zero.mp hc.symm)
+    simp [hn]
+  · simp
+
+def IsChain (μ : Population m) := ∀ s, μ s ≠ 0 → ∀ i j : Fin m, i ≤ j → j ∈ s → i ∈ s
+
+private theorem nested (μ : Population m) : IsChain (chainPop μ) := by
+  intro s h i j hij hj
+  obtain ⟨x,_,hx⟩ := Finset.exists_ne_zero_of_sum_ne_zero h
+  by_cases he : s = initial x
+  · subst s
+    exact (initial_mem x i).mpr (Nat.lt_of_le_of_lt hij ((initial_mem x j).mp hj))
+  · simp [he] at hx
+
+private theorem chain_fits {μ : Population m} (hm : 0 < m) (hc : IsChain μ) : HasDegree 1 μ := by
+  let i : Fin m := ⟨0,hm⟩
+  refine ⟨1-X i,(totalDegree_sub ..).trans (by simp),?_,?_⟩
+  · simp [atRow,flag]
+  · intro s hs hn
+    obtain ⟨j,hj⟩ := hn
+    have hi := hc s hs i j (Nat.zero_le _) hj
+    simp [atRow,flag,hi]
+
+theorem aggregate_count (μ : Population m) :
+    ∑ j ∈ range (m+1), (-1:ℤ)^j * layer μ j = μ ∅ := by
+  have row (s : Row m) : ∑ j ∈ range (m+1), ((-1:ℤ)^j * s.card.choose j) =
+      if s = ∅ then 1 else 0 := by
+    have hcap : s.card ≤ m := by simpa using card_le_univ s
+    have eq : (∑ j ∈ range (s.card+1), ((-1:ℤ)^j * s.card.choose j)) =
+        ∑ j ∈ range (m+1), ((-1:ℤ)^j * s.card.choose j) := by
+      apply sum_subset (range_mono (Nat.succ_le_succ hcap))
+      intro j _ hj
+      have lt : s.card < j := by simp at hj; omega
+      simp [Nat.choose_eq_zero_of_lt lt]
+    rw [← eq, Int.alternating_sum_range_choose]
+    simp
+  simp only [layer_by_weight, mass, Finset.mul_sum]
+  rw [sum_comm]
+  calc
+    _ = ∑ s, (μ s : ℤ) * (if s = ∅ then 1 else 0) := by
+      apply sum_congr rfl
+      intro s _
+      rw [← row s, mul_sum]
+      apply sum_congr rfl
+      intro j _
+      ring
+    _ = _ := by simp
+
+/-- Even nested families of degree one require order m when only layer totals are
+    available. Both have the first event as their union, with the same fixed order. -/
+theorem aggregate_sharp (m : ℕ) (hm : 0 < m) :
+    ∃ μ ν : Population m, IsChain μ ∧ IsChain ν ∧ HasDegree 1 μ ∧ HasDegree 1 ν ∧
+      (∀ j < m, layer μ j = layer ν j) ∧ μ ∅ ≠ ν ∅ := by
+  refine ⟨chainPop (half 0),chainPop (half 1),nested _,nested _,chain_fits hm (nested _),
+    chain_fits hm (nested _),?_,?_⟩
+  · intro j hj
+    rw [chain_layer,chain_layer]
+    apply sum_congr rfl
+    intro T ht
+    exact proper_moments hj T (mem_powersetCard.mp ht).2.le
+  · simp [chain_origin,half]
 
 end IntersectionOrder

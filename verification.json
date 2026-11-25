@@ -5,7 +5,7 @@
     "ClauseIntervals": "3b4d235177b91641b83dec1ff725a1a4345ee059c01cdeaa5bff5935723e7a01",
     "ClauseTrees": "8a1b21b7407bc2bd12efb74517fe71972d489174627ac3b8d810bb3702fbdb3b",
     "ClauseSpan": "21db57a75d4dce0df21c55f12b2e48fb3ac4b200c84c9512f446f86986e980e3",
-    "IntersectionOrder": "3c241e18a073a9d557c7d05a094956690aa78151e88f8b5f26a355552327b54a"
+    "IntersectionOrder": "6d61c25bc1b74304ec6bb7b8f2b2269ba7e2a6a828019fc24c521205b089f77e"
   },
   "axioms": {
     "ClauseIntervals.gap_iff_two_completions": [
@@ -291,6 +291,21 @@
       "propext"
     ],
     "IntersectionOrder.block_recognition_sharp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.layer_by_weight": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.aggregate_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.aggregate_sharp": [
       "Classical.choice",
       "Quot.sound",
       "propext"

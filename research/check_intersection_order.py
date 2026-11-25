@@ -3,6 +3,7 @@ from fractions import Fraction
 from functools import cache
 from itertools import product
 import json
+from math import comb
 from random import Random
 
 from clause_span import solve_linear
@@ -109,6 +110,24 @@ def block_check():
     return cases
 
 
+def chain_checks():
+    for m in range(1, 11):
+        layers = []
+        for p in (0, 1):
+            # All m+1 chain patterns receive positive mass, so the inclusions
+            # are strict and both systems have uncovered points.
+            counts = [1 + (comb(m, k) if k % 2 == p else 0) for k in range(m+1)]
+            data = [0]*(m+1)
+            for q in range(1 << m):
+                moment = sum(counts[q.bit_length():])
+                data[q.bit_count()] += moment
+            assert data == [sum(a*comb(k, j) for k, a in enumerate(counts)) for j in range(m+1)]
+            assert sum((-1)**j*v for j, v in enumerate(data)) == counts[0] == 2-p
+            layers.append(data)
+        assert layers[0][:-1] == layers[1][:-1] and layers[0][-1] != layers[1][-1]
+    return 10
+
+
 def main():
     cases = rounded = 0
     for m in range(4):
@@ -139,6 +158,7 @@ def main():
     assert (tv.uncovered_min, tv.uncovered_max) == (1, 1)
     return dict(table_degree_cases=cases, exact_by_rounding_without_certificate=rounded,
                 sharp_parity_pairs=sharp_examples(), block_moment_checks=block_check(),
+                strict_chain_pairs=chain_checks(),
                 affine_160_variable_uncovered=large)
 
 

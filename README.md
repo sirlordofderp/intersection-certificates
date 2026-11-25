@@ -8,6 +8,7 @@ There are two different answers. Suppose the union has a *pointwise inclusion–
 | --- | --- |
 | Compute the number of uncovered points, given the promise that a degree-d identity exists | **2d** |
 | Decide whether any degree-d identity exists, and recover one on success | **2d+1** |
+| Compute from only the *total* intersection size at each order, for m strictly nested events | **m**, even at degree one |
 
 These thresholds hold for finite event systems, for every d ≥ 1, with the universe size given. Order counts the events in one intersection. The number of queries and the running time are polynomial in the number of events for **fixed** d when intersection sizes can be computed in polynomial time. A signed CNF clause is one application. Its event consists of the assignments on which that clause is false.
 
