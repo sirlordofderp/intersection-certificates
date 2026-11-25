@@ -1,0 +1,304 @@
+{
+  "lean": "Lean (version 4.36.0, x86_64-w64-windows-gnu, commit 611c117bfaf7b7ae1cfcf246ce6fba31e8f509e9, Release)",
+  "mathlib": "fc4f59e577feb1a4956671bc04ac18aaaf8cd842",
+  "source_sha256_lf": {
+    "ClauseIntervals": "3b4d235177b91641b83dec1ff725a1a4345ee059c01cdeaa5bff5935723e7a01",
+    "ClauseTrees": "8a1b21b7407bc2bd12efb74517fe71972d489174627ac3b8d810bb3702fbdb3b",
+    "ClauseSpan": "21db57a75d4dce0df21c55f12b2e48fb3ac4b200c84c9512f446f86986e980e3",
+    "IntersectionOrder": "3c241e18a073a9d557c7d05a094956690aa78151e88f8b5f26a355552327b54a"
+  },
+  "axioms": {
+    "ClauseIntervals.gap_iff_two_completions": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.sample_represents": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.example_length": [
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.quadratic_lower_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.twoExample_length": [
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.cubic_log_lower_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.cubic_log_upper_bound": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.all_orders_and_subformulas": [
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseIntervals.certified_model_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.mem_rows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.clause_false": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.cube_mass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.edge_half": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.double_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.width_mass": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.tree_capacity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.sat_capacity": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.node_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.node_width": [
+      "propext"
+    ],
+    "ClauseTrees.node_antichain": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.depth_test": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.false_prefix_suffix": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.leaf_removal_model": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.arm_parent_is_leaf": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.arm_start": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.arm_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.unique_base_start": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.vertex_width": [
+      "propext"
+    ],
+    "ClauseTrees.vertex_antichain": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.extremal_size": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.extremal_components": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.spectral_certificate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.starts_zero_iff_model": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseTrees.certified_tree_models": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.local_equations_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.discovered_union_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.component_degree": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.component_eval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.hidden_tree_lift": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.hidden_tree_intersections": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.full_trace_coefficients": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.path_bound": [
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.units_realize": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ClauseSpan.discovered_model_count": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.polynomial_transfer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.count_transfer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.weight_eval": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.certificate_transfer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.proper_moments": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.counting_sharp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.recognition_sharp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.projection_gap": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.weighted_gap_bounds": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.block_counts_rows": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.block_factorization": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.block_order_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.detector_transfer": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.block_counting_sharp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "IntersectionOrder.block_recognition_sharp": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "experiments": {
+    "check_experiments.py": "matched",
+    "check_clause_trees.py": "matched",
+    "check_intersection_order.py": "matched"
+  }
+}

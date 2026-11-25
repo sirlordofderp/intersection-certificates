@@ -1,0 +1,15 @@
+name: Verify proofs and experiments
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: leanprover/lean-action@ba3fdfe5c4476c925da13bf11a005ddb47e47aee
+        with:
+          auto-config: "false"
+          use-mathlib-cache: "false"
+          use-github-cache: "false"
+      - run: python3 verify.py --fetch-cache

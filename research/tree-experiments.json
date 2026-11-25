@@ -1,0 +1,33 @@
+{
+  "exhaustive_two_variable_families": {
+    "True": 47,
+    "False": 1
+  },
+  "random_cases": 100,
+  "extremal_families": 12,
+  "extremal_truth_rows": 7140,
+  "span_feasibility_cases": {
+    "True": 307,
+    "False": 137
+  },
+  "independent_unit_sizes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "odd_cycle_first_degree": 2,
+  "spectral_example": {
+    "variables": 16,
+    "clauses": 42,
+    "discovered_degree": 1,
+    "nonzero_coefficients": 4,
+    "components_to_assignments": {
+      "0": 32768,
+      "4": 16384,
+      "7": 16384
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "exhaustive_multisets": 2002,
+  "seeded_ordered_formulas": 160,
+  "seed": 905005,
+  "uniform_completion_counterexample": [
+    [
+      1
+    ],
+    [
+      4
+    ],
+    [
+      2
+    ],
+    [
+      -5
+    ],
+    [
+      3
+    ]
+  ],
+  "lower_family": {
+    "q": 3,
+    "probes": 4,
+    "rows": 1359,
+    "min_fiber": 12
+  },
+  "structured": {
+    "variables": 96,
+    "clauses": 48,
+    "moments": [
+      79228162514264337593543950336,
+      59029580965501820993536,
+      10924747533582336,
+      0
+    ],
+    "models": 79228103484694296839256539136
+  }
+}
