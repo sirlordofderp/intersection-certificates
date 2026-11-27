@@ -1,0 +1,34 @@
+{
+  "connected_graph_types": 30,
+  "exact_rational_rank_cases": 137,
+  "quotient": {
+    "exhaustive_model_set_comparisons": 333,
+    "guarded_petal_sizes": [
+      2,
+      3,
+      4,
+      5
+    ],
+    "decoder": {
+      "original_variables": 68,
+      "original_clauses": 94,
+      "degree_lower_bound": 31,
+      "quotient_variables": 37,
+      "quotient_clauses": 32,
+      "degree": 1,
+      "models": 68719476736,
+      "witness_checked": true
+    }
+  },
+  "exact_cover": {
+    "tripartite_sources": 256,
+    "positive_sources": 175,
+    "exact_width_three_rank_checks": 2,
+    "quotient_model_counts_checked": 256
+  },
+  "triangle_degree_one_dimensions": {
+    "unoriented": 4,
+    "directed_cycle": 4,
+    "bidirected": 6
+  }
+}

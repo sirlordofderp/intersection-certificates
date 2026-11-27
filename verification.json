@@ -5,7 +5,8 @@
     "ClauseIntervals": "3b4d235177b91641b83dec1ff725a1a4345ee059c01cdeaa5bff5935723e7a01",
     "ClauseTrees": "8a1b21b7407bc2bd12efb74517fe71972d489174627ac3b8d810bb3702fbdb3b",
     "ClauseSpan": "21db57a75d4dce0df21c55f12b2e48fb3ac4b200c84c9512f446f86986e980e3",
-    "IntersectionOrder": "6d61c25bc1b74304ec6bb7b8f2b2269ba7e2a6a828019fc24c521205b089f77e"
+    "IntersectionOrder": "6d61c25bc1b74304ec6bb7b8f2b2269ba7e2a6a828019fc24c521205b089f77e",
+    "CutDegree": "e3926915bc6c50836aa5d66fdaa10f02ee0a8269b1082c988cebaa4b10a623dd"
   },
   "axioms": {
     "ClauseIntervals.gap_iff_two_completions": [
@@ -309,11 +310,72 @@
       "Classical.choice",
       "Quot.sound",
       "propext"
+    ],
+    "CutDegree.pinned_observable_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.graph_pinned": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.observable_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.pattern_is_clause": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.hypergraph_pinned": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.local_table_mem": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.table_space_eq": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.hypergraph_observable_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.disagreement_iff_local_tables": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.common_zero_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.consensus_iff_cover": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.consensus_iff_exact_triples": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
     ]
   },
   "experiments": {
     "check_experiments.py": "matched",
     "check_clause_trees.py": "matched",
-    "check_intersection_order.py": "matched"
+    "check_intersection_order.py": "matched",
+    "check_cut_degree.py": "matched"
   }
 }

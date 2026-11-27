@@ -1,5 +1,5 @@
 name = "intersection_certificates"
-defaultTargets = ["ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder"]
+defaultTargets = ["ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder", "CutDegree"]
 
 [[require]]
 name = "mathlib"
@@ -23,4 +23,8 @@ srcDir = "research"
 
 [[lean_lib]]
 name = "IntersectionOrder"
+srcDir = "research"
+
+[[lean_lib]]
+name = "CutDegree"
 srcDir = "research"

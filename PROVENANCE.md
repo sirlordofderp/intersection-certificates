@@ -4,6 +4,8 @@ The repository is maintained by [sirlordofderp](https://github.com/sirlordofderp
 
 The work began with samples of actual assignments preserving patterns of falsified clauses. The next stage studied trees supporting those patterns and the certificate degree that a hidden tree guarantees. The present note asks what can be learned from labelled intersection sizes alone. The separation between promised counting and recognizing the promise emerged by comparing normal equations with a nonnegative residual, then constructing parity populations indistinguishable at the preceding order. The differential tests use direct pointwise equations and explicit small populations as reference calculations.
 
+The subsequent [consensus study](research/CUT-DEGREE.md) began with exact rational ranks of products of oriented edge-cut indicators. Matching these ranks with the sets of variables covered by a bounded number of edges suggested a missing dimension at each degree. The proof used the bit pinned by a nonzero cut. Extending that argument to hyperedge patterns led to the Exact Cover reduction and to tests of signed-equality preprocessing against full model sets.
+
 ## Dependencies and third-party material
 
 Two source files reproduce the upstream project's literal and CNF semantics and their imports. They come from the pinned commit below. The local package and its mathematical claims are independent of the upstream project.
