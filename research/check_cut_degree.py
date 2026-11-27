@@ -4,7 +4,8 @@ from itertools import combinations, permutations
 import json
 from random import Random
 
-from quotient_sat import count_models, lift_row, quotient
+from clause_span import solve_linear
+from quotient_sat import contract, count_models, lift_row, linear_links, quotient
 
 
 def product_columns(n, arcs, d):
@@ -131,6 +132,49 @@ def check_hardness():
                 exact_width_three_rank_checks=2, quotient_model_counts_checked=256)
 
 
+def check_linear():
+    # Independent pointwise equations with signed targets, without the Gram matrix.
+    rng = Random(88210)
+    pairs = 0
+    for _ in range(32):
+        n = rng.randrange(2, 5)
+        clauses = []
+        for _ in range(rng.randrange(1, 7)):
+            vs = rng.sample(range(1, n+1), rng.randint(1, n))
+            clauses.append(tuple(rng.choice((-v, v)) for v in vs))
+        links = linear_links(n, clauses)
+        labels = {-a: b for a, b in links[::2]}
+        literals = [x for i in range(1, n+1) for x in (i, -i)]
+        for a, b in combinations(literals, 2):
+            rows = [[int(not satisfies([c], r)) for c in clauses]
+                    + [int(satisfies([(a,)], r))-int(satisfies([(b,)], r))]
+                    for r in range(1 << n)]
+            possible = solve_linear(rows, len(clauses)) is not None
+            assert (labels.get(a, a) == labels.get(b, b)) == possible
+            pairs += 1
+    # Split each binary equality implication using its own independent guard.
+    # The two halves sum to the old flag, but their variable scopes differ
+    # between the forward and backward implications.
+    b, leaves = 4, 15
+    n, plain = decoder(b, leaves)
+    clauses = []
+    for c in plain:
+        if len(c) == 2:
+            n += 1
+            clauses.extend([(*c, n), (*c, -n)])
+        else:
+            clauses.append(c)
+    assert contract(n, clauses)[0] == n
+    k, residual, _ = quotient(n, clauses)
+    assert k == n-leaves and len(residual) == 1 << b
+    count, witness = count_models(n, clauses, 1)
+    assert count == 1 << (k-1) and satisfies(clauses, witness)
+    return dict(pointwise_signed_pair_tests=pairs, split_decoder=dict(
+        input_variables=n, input_clauses=len(clauses), syntactic_quotient_variables=n,
+        linear_quotient_variables=k, residual_clauses=len(residual),
+        input_degree_lower_bound=leaves, residual_degree=1, models=count, witness_checked=True))
+
+
 def check_quotients():
     rng = Random(54139)
     cases = [(0, []), (0, [()]), (4, [(1, -1)]), (1, [(1,), (-1,)]),
@@ -208,7 +252,7 @@ def main():
     assert len(pivots(3, product_columns(3, cycle, 1))) == 4
     assert len(pivots(3, product_columns(3, cycle+[(v,u) for u,v in cycle], 1))) == 6
     return dict(connected_graph_types=graphs, exact_rational_rank_cases=checks, quotient=check_quotients(),
-                exact_cover=check_hardness(),
+                exact_cover=check_hardness(), linear_consequences=check_linear(),
                 triangle_degree_one_dimensions=dict(unoriented=4, directed_cycle=4, bidirected=6))
 
 

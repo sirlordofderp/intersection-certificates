@@ -26,6 +26,20 @@
     "exact_width_three_rank_checks": 2,
     "quotient_model_counts_checked": 256
   },
+  "linear_consequences": {
+    "pointwise_signed_pair_tests": 546,
+    "split_decoder": {
+      "input_variables": 65,
+      "input_clauses": 76,
+      "syntactic_quotient_variables": 65,
+      "linear_quotient_variables": 50,
+      "residual_clauses": 16,
+      "input_degree_lower_bound": 15,
+      "residual_degree": 1,
+      "models": 562949953421312,
+      "witness_checked": true
+    }
+  },
   "triangle_degree_one_dimensions": {
     "unoriented": 4,
     "directed_cycle": 4,

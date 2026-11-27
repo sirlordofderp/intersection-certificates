@@ -6,7 +6,7 @@
     "ClauseTrees": "8a1b21b7407bc2bd12efb74517fe71972d489174627ac3b8d810bb3702fbdb3b",
     "ClauseSpan": "21db57a75d4dce0df21c55f12b2e48fb3ac4b200c84c9512f446f86986e980e3",
     "IntersectionOrder": "6d61c25bc1b74304ec6bb7b8f2b2269ba7e2a6a828019fc24c521205b089f77e",
-    "CutDegree": "e3926915bc6c50836aa5d66fdaa10f02ee0a8269b1082c988cebaa4b10a623dd"
+    "CutDegree": "2d35ecf9e45bdf33ac91bb865ef131f208419b96d9103975f81455ac5654b5eb"
   },
   "axioms": {
     "ClauseIntervals.gap_iff_two_completions": [
@@ -312,6 +312,16 @@
       "propext"
     ],
     "CutDegree.pinned_observable_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.all_degrees_iff_differences": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "CutDegree.span_zero_on_models": [
       "Classical.choice",
       "Quot.sound",
       "propext"

@@ -1,5 +1,8 @@
-"""Count after extracting explicit consensus scopes and equivalent literals."""
-from clause_span import solve
+"""Count after extracting consensus scopes and signed linear consequences."""
+from fractions import Fraction
+
+from clause_intervals import clause_masks
+from clause_span import meet, solve, volume
 
 
 def normalize(clauses):
@@ -71,8 +74,49 @@ def consensus_links(clauses):
             yield root, -lit
 
 
-def quotient(n, clauses):
-    """For dense variables 1..n return (new n, residual, signed lift), or None for conflict."""
+def linear_links(n, clauses):
+    """Find literal equalities modulo the rational linear span of clause flags.
+
+    Inner products on the Boolean cube are computed as box-intersection sizes.
+    The flag span excludes an automatic constant term: we need zero on models.
+    """
+    if not clauses:
+        return []
+    variables = sorted({abs(lit) for c in clauses for lit in c})
+    flags = clause_masks(clauses)
+    bits = [(0, 1 << (v-1)) for v in variables]
+    probes = [*flags, (0, 0), *bits]
+    pivots = {}
+
+    def remainder(box):
+        row = [volume(n, meet(box, p)) for p in probes]
+        for j in sorted(pivots):
+            scale = row[j]
+            if scale:
+                row = [a-scale*b for a, b in zip(row, pivots[j])]
+        return row
+
+    for flag in flags:
+        row = remainder(flag)
+        j = next((i for i, a in enumerate(row) if a), None)
+        if j is not None:
+            scale = Fraction(row[j])
+            pivots[j] = [a/scale for a in row]
+    one = remainder((0, 0))
+    representatives = {}
+    links = []
+    for v, bit in zip(variables, bits):
+        pos = remainder(bit)
+        neg = [a-b for a, b in zip(one, pos)]
+        for lit, key in ((v, tuple(pos)), (-v, tuple(neg))):
+            other = representatives.setdefault(key, lit)
+            if other != lit:
+                links.extend([(-lit, other), (lit, -other)])
+    return links
+
+
+def contract(n, clauses, extra=()):
+    """Substitute signed classes from the binary graph and complete scope tables."""
     clauses = [tuple(c) for c in clauses]
     if n < 0 or any(not 1 <= abs(x) <= n for c in clauses for x in c):
         raise ValueError("variables must be in 1..n")
@@ -91,6 +135,8 @@ def quotient(n, clauses):
             add_binary(c[0], c[-1])
     for a, b in consensus_links(clauses):
         add_binary(a, b)
+    for a, b in extra:
+        add_binary(a, b)
     scc = components(adj, rev)
     signed = {}
     mapping = {}
@@ -104,6 +150,23 @@ def quotient(n, clauses):
         mapping[i], mapping[-i] = signed[a], signed[b]
     residual = normalize(tuple(mapping[x] for x in c) for c in clauses)
     return len(signed)//2, residual, tuple(mapping[i] for i in range(1, n+1))
+
+
+def quotient(n, clauses):
+    """Return (new n, residual, signed lift), or None for a proved contradiction."""
+    first = contract(n, clauses)
+    if first is None:
+        return None
+    k, residual, mapping = first
+    extra = linear_links(k, residual)
+    if not extra:
+        return first
+    second = contract(k, residual, extra)
+    if second is None:
+        return None
+    size, final, signed = second
+    lift = tuple(signed[abs(i)-1] * (1 if i > 0 else -1) for i in mapping)
+    return size, final, lift
 
 
 def lift_row(mapping, row):

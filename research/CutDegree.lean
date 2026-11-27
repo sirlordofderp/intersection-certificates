@@ -218,6 +218,29 @@ theorem pinned_observable_iff {H : Set (Fn V)} (P : Pinned H) (r : V) (d : ℕ) 
       exact (add_eq_left.mp he.symm)
     simpa [hx] using ha
 
+/-- For anchored generators, the degree-one difference test is necessary and
+    sufficient for adjoining bit reads to preserve every degree on observables. -/
+theorem all_degrees_iff_differences {H : Set (Fn V)} (r : V)
+    (h₀ : ∀ g ∈ H, g low = 0 ∧ g high = 0)
+    (hp : ∀ g ∈ H, ∃ i, ∀ x, g x ≠ 0 → x i = true) :
+    (∀ d (f : Fn V), f ∈ space H d ↔ f ∈ space (reads H) d ∧ f low = f high) ↔
+      ∀ i j, bit i-bit j ∈ space H 1 := by
+  constructor
+  · intro h i j
+    apply (h 1 _).2
+    refine ⟨(space _ _).sub_mem (atom (Or.inr ⟨i,rfl⟩)) (atom (Or.inr ⟨j,rfl⟩)),?_⟩
+    simp [bit,low,high]
+  · exact fun hd => pinned_observable_iff ⟨h₀,hp,hd⟩ r
+
+/-- A linear consequence of clause flags vanishes on every satisfying row. -/
+theorem span_zero_on_models {H : Set (Fn V)} (x : V → Bool) (hx : ∀ g ∈ H, g x = 0)
+    {f : Fn V} (hf : f ∈ Submodule.span ℚ H) : f x = 0 := by
+  induction hf using Submodule.span_induction with
+  | mem g hg => exact hx g hg
+  | zero => rfl
+  | add _ _ _ _ a b => simp [a,b]
+  | smul _ _ _ a => simp [a]
+
 /-- Both orientations of each edge on a connected graph satisfy the hypotheses. -/
 theorem graph_pinned {E : V → V → Prop} (sym : ∀ i j, E i j → E j i)
     (paths : ∀ i j, Relation.ReflTransGen E i j) : Pinned (cuts E) where
