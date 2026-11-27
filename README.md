@@ -20,13 +20,17 @@ The [research note](research/INTERSECTION-ORDER.md) gives the proof, sharp examp
 
 A connected family of three-variable scopes can encode the requirement that every variable has the same value. Its two satisfying assignments are immediate. On an even number of variables, the minimum degree of a polynomial in the original clause-falsification flags that recognizes those assignments is **exactly the minimum number of scopes covering all variables**. Deciding whether this degree meets an input threshold is NP-complete even for these width-three formulas. A polynomial-time change of variables counts the two models directly. [Mathematical note and reduction](research/CUT-DEGREE.md) · [Lean proof](research/CutDegree.lean) · [Executable counter](research/quotient_sat.py)
 
+## SAT decision in hidden parity coordinates
+
+The [SAT decision study](research/PARITY-DECISION.md) gives a deterministic solver for arbitrary CNF and an exact measure of one source of exponential work. Every 3-SAT instance is a restriction of a formula that splits into independent six-bit blocks after a change of parity coordinates. At each cut in the restricted construction, the solver retains exactly one state for every assignment to the original variables shared across the cut. [Lean theorems](research/ParityDecision.lean) · [Solver](research/parity_sat.py)
+
 ## Reproduce the results
 
 Use Python 3.10 or newer, Git, and [Elan](https://github.com/leanprover/elan). From the repository root run
 
     python verify.py --fetch-cache
 
-The script fetches the required Mathlib modules, builds with the pinned Lean 4.36.0 toolchain, inspects the axioms of the public research theorems, and replays four Python experiment suites against their recorded outputs. On a prepared checkout, `python verify.py` skips the cache download. For the consensus and Exact Cover experiments alone, run `python -B research/check_cut_degree.py`. The notes give time and space bounds for the algorithms. The exhaustive test oracles intentionally enumerate small populations.
+The script fetches the required Mathlib modules, builds with the pinned Lean 4.36.0 toolchain, inspects the axioms of the public research theorems, and replays five Python experiment suites against their recorded outputs. On a prepared checkout, `python verify.py` skips the cache download. To test the SAT decision results alone, run `python -B research/check_parity_sat.py`. The notes give time and space bounds for the algorithms. The exhaustive test oracles intentionally enumerate small populations.
 
 [Local verification record](verification.json) · [Public verification runs](https://github.com/sirlordofderp/intersection-certificates/actions/workflows/verify.yml) · [New experiment output](research/order-experiments.json)
 

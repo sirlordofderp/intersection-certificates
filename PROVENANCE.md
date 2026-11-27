@@ -6,6 +6,8 @@ The work began with samples of actual assignments preserving patterns of falsifi
 
 The subsequent [consensus study](research/CUT-DEGREE.md) began with exact rational ranks of products of oriented edge-cut indicators. Matching these ranks with the sets of variables covered by a bounded number of edges suggested a missing dimension at each degree. The proof used the bit pinned by a nonzero cut. Extending that argument to hyperedge patterns led to the Exact Cover reduction and to tests of signed-equality preprocessing against full model sets.
 
+The [SAT decision study](research/PARITY-DECISION.md) arose from asking whether independent groups of parity coordinates persist when ordinary variables are fixed. Codex constructed the masked occurrence encoding and derived its shared-variable state count, then tested the solver against exhaustive search and formalized the mathematical core. The study credits the earlier Walsh, trellis, and compilation methods it uses.
+
 ## Dependencies and third-party material
 
 Two source files reproduce the upstream project's literal and CNF semantics and their imports. They come from the pinned commit below. The local package and its mathematical claims are independent of the upstream project.

@@ -6,7 +6,8 @@
     "ClauseTrees": "8a1b21b7407bc2bd12efb74517fe71972d489174627ac3b8d810bb3702fbdb3b",
     "ClauseSpan": "21db57a75d4dce0df21c55f12b2e48fb3ac4b200c84c9512f446f86986e980e3",
     "IntersectionOrder": "6d61c25bc1b74304ec6bb7b8f2b2269ba7e2a6a828019fc24c521205b089f77e",
-    "CutDegree": "2d35ecf9e45bdf33ac91bb865ef131f208419b96d9103975f81455ac5654b5eb"
+    "CutDegree": "2d35ecf9e45bdf33ac91bb865ef131f208419b96d9103975f81455ac5654b5eb",
+    "ParityDecision": "947bb5131f3a23535bcbcd12d9288775f5fae5f7229828227bd55a5cbc17019c"
   },
   "axioms": {
     "ClauseIntervals.gap_iff_two_completions": [
@@ -380,12 +381,75 @@
       "Classical.choice",
       "Quot.sound",
       "propext"
+    ],
+    "ParityDecision.at_root": [
+      "propext"
+    ],
+    "ParityDecision.at_selector": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.at_mask": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.pack_readback": [
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.clause_spectrum": [
+      "propext"
+    ],
+    "ParityDecision.twist_involutive": [
+      "Quot.sound"
+    ],
+    "ParityDecision.encoded_energy": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.pinned_projection": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.all_clauses_width_three": [
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.unpinned_extension": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.pinned_sat_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.cut_card": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.trellis_threshold": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ParityDecision.shared_variable_states": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
     ]
   },
   "experiments": {
     "check_experiments.py": "matched",
     "check_clause_trees.py": "matched",
     "check_intersection_order.py": "matched",
-    "check_cut_degree.py": "matched"
+    "check_cut_degree.py": "matched",
+    "check_parity_sat.py": "matched"
   }
 }

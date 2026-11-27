@@ -1,0 +1,43 @@
+{
+  "random_cases": {
+    "sat": 337,
+    "unsat": 223
+  },
+  "direct_energy_checks": 21818,
+  "unmasked_random_three_cnf": {
+    "sat": 46,
+    "unsat": 18,
+    "variables": 10,
+    "clauses_per_case": 46
+  },
+  "direct_pigeonhole_cases": 2,
+  "boundary_cases": 6,
+  "wrapper_subfamilies": 256,
+  "pinned_original_rows": 128,
+  "all_orders_of_four_vertex_graph": 24,
+  "guarded_petals": 40,
+  "signed_cycles": [
+    {
+      "sat": true,
+      "variables": 468,
+      "clauses": 720,
+      "max_cut_rank": 4
+    },
+    {
+      "sat": false,
+      "variables": 468,
+      "clauses": 720,
+      "max_cut_rank": 4
+    }
+  ],
+  "chain": {
+    "variables": 450,
+    "ordinary_clauses": 448,
+    "unit_pins": 192,
+    "blocks": 64,
+    "block_rank": 6,
+    "projected_evidence_rank": 126,
+    "max_cut_rank": 2,
+    "max_retained_states": 4
+  }
+}

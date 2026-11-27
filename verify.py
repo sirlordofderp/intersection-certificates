@@ -12,12 +12,13 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 RESEARCH = ROOT / "research"
-MODULES = ("ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder", "CutDegree")
+MODULES = ("ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder", "CutDegree", "ParityDecision")
 EXPERIMENTS = {
     "check_experiments.py": "experiments.json",
     "check_clause_trees.py": "tree-experiments.json",
     "check_intersection_order.py": "order-experiments.json",
     "check_cut_degree.py": "cut-experiments.json",
+    "check_parity_sat.py": "parity-experiments.json",
 }
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 
