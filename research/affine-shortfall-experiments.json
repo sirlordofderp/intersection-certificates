@@ -1,0 +1,82 @@
+{
+  "exhaustive": {
+    "formulas": 10648,
+    "deficiency_one": {
+      "unsat": 2130,
+      "sat": 8292
+    }
+  },
+  "field_evaluations_by_shortfall": {
+    "0": 160,
+    "1": 160,
+    "2": 160,
+    "3": 160
+  },
+  "random_instances": {
+    "SAT": 289,
+    "OUTSIDE_PROMISE": 243,
+    "NO_HIT": 188
+  },
+  "shared_weight_counterexample": {
+    "clauses": [
+      [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      [
+        [
+          1,
+          1
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          1
+        ]
+      ]
+    ],
+    "odd_choices": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        1,
+        0
+      ]
+    ]
+  },
+  "line_cover_and_exterior_lift": true,
+  "unique_cycle_ranks": [
+    2,
+    5,
+    9
+  ]
+}

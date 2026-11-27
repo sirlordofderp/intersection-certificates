@@ -1,5 +1,5 @@
 name = "intersection_certificates"
-defaultTargets = ["ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder", "CutDegree", "ParityDecision"]
+defaultTargets = ["ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder", "CutDegree", "ParityDecision", "AffineShortfall", "OrderedAffine", "ReciprocalHull"]
 
 [[require]]
 name = "mathlib"
@@ -31,4 +31,16 @@ srcDir = "research"
 
 [[lean_lib]]
 name = "ParityDecision"
+srcDir = "research"
+
+[[lean_lib]]
+name = "AffineShortfall"
+srcDir = "research"
+
+[[lean_lib]]
+name = "OrderedAffine"
+srcDir = "research"
+
+[[lean_lib]]
+name = "ReciprocalHull"
 srcDir = "research"

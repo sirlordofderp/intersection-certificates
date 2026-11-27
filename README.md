@@ -24,13 +24,17 @@ A connected family of three-variable scopes can encode the requirement that ever
 
 The [SAT decision study](research/PARITY-DECISION.md) gives a deterministic solver for arbitrary CNF and an exact measure of one source of exponential work. Every 3-SAT instance is a restriction of a formula that splits into independent six-bit blocks after a change of parity coordinates. At each cut in the restricted construction, the solver retains exactly one state for every assignment to the original variables shared across the cut. [Lean theorems](research/ParityDecision.lean) · [Solver](research/parity_sat.py)
 
+## Parity equations shared by admissible induced subgraphs
+
+The newest [graph theorem and SAT application](research/RECIPROCAL-HULL.md) describes every parity equation shared by induced subgraphs whose vertices have prescribed degree parities. There is exactly one independent equation per connected component containing a vertex labelled odd. A constructive basis gives deterministic SAT decisions for a class of cyclic affine formulas with one extra clause. The [Lean proof](research/ReciprocalHull.lean) covers the full characterization and its parity-query consequence. A [companion construction](research/ORDERED-AFFINE.md) produces reusable witnesses on ordered matched formulas and proves a worst-case lower bound on the number required.
+
 ## Reproduce the results
 
 Use Python 3.10 or newer, Git, and [Elan](https://github.com/leanprover/elan). From the repository root run
 
     python verify.py --fetch-cache
 
-The script fetches the required Mathlib modules, builds with the pinned Lean 4.36.0 toolchain, inspects the axioms of the public research theorems, and replays five Python experiment suites against their recorded outputs. On a prepared checkout, `python verify.py` skips the cache download. To test the SAT decision results alone, run `python -B research/check_parity_sat.py`. The notes give time and space bounds for the algorithms. The exhaustive test oracles intentionally enumerate small populations.
+The script fetches the required Mathlib modules, builds with the pinned Lean 4.36.0 toolchain, inspects the axioms of the public research theorems, and replays eight Python experiment suites against their recorded outputs. On a prepared checkout, `python verify.py` skips the cache download. For the new graph result alone, run `python -B research/check_reciprocal_affine.py`. The notes give time and space bounds for the algorithms. The exhaustive test oracles intentionally enumerate small populations.
 
 [Local verification record](verification.json) · [Public verification runs](https://github.com/sirlordofderp/intersection-certificates/actions/workflows/verify.yml) · [New experiment output](research/order-experiments.json)
 

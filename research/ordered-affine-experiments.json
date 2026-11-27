@@ -1,0 +1,32 @@
+{
+  "exhaustive_subspace_minimum_tests": 240,
+  "exhaustive_flat_queries": 34464,
+  "full_solver_truth_tables": {
+    "SAT": 260,
+    "UNSAT": 340
+  },
+  "sharp_examples": [
+    {
+      "query_budget": 1,
+      "block_size": 12,
+      "forced_points": 13,
+      "retained": 13
+    },
+    {
+      "query_budget": 2,
+      "block_size": 6,
+      "forced_points": 49,
+      "retained": 49
+    },
+    {
+      "query_budget": 3,
+      "block_size": 4,
+      "forced_points": 125,
+      "retained": 125
+    }
+  ],
+  "dense_rank": 24,
+  "dense_feedback": 1,
+  "dense_retained": 25,
+  "paired_feedback": 12
+}

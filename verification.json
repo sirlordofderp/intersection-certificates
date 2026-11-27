@@ -7,7 +7,10 @@
     "ClauseSpan": "21db57a75d4dce0df21c55f12b2e48fb3ac4b200c84c9512f446f86986e980e3",
     "IntersectionOrder": "6d61c25bc1b74304ec6bb7b8f2b2269ba7e2a6a828019fc24c521205b089f77e",
     "CutDegree": "2d35ecf9e45bdf33ac91bb865ef131f208419b96d9103975f81455ac5654b5eb",
-    "ParityDecision": "947bb5131f3a23535bcbcd12d9288775f5fae5f7229828227bd55a5cbc17019c"
+    "ParityDecision": "947bb5131f3a23535bcbcd12d9288775f5fae5f7229828227bd55a5cbc17019c",
+    "AffineShortfall": "28466c5d6425b8120229a9a940ae0ccd6acb83f6a6461fb2088b805efd7076af",
+    "OrderedAffine": "2576c4d74dea061a3fdb1a052d1a74c925c009e4e74b79d4b57142ba1a5758f7",
+    "ReciprocalHull": "e7a9f075edafb085dd16f19e6efb8a532f56871016dda1ee1022ad8cfae43c86"
   },
   "axioms": {
     "ClauseIntervals.gap_iff_two_completions": [
@@ -443,6 +446,105 @@
       "Classical.choice",
       "Quot.sound",
       "propext"
+    ],
+    "AffineShortfall.eval_add": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AffineShortfall.bit_eq_zero_or_one": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AffineShortfall.mixed_true": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AffineShortfall.slopes_update": [
+      "Quot.sound",
+      "propext"
+    ],
+    "AffineShortfall.model_basis": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AffineShortfall.basis_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "AffineShortfall.sat_iff_nonzero_moment": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.hits_successors": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.hits_closure": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.hits_clauses": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.feature_pruning": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.free_pivot": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.selector_eq_one_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.block_query_unique": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "OrderedAffine.block_all_required": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ReciprocalHull.component_invariant": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ReciprocalHull.singleton_zero": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ReciprocalHull.marked_agree": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ReciprocalHull.invariant_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "ReciprocalHull.odd_probe_iff": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
     ]
   },
   "experiments": {
@@ -450,6 +552,9 @@
     "check_clause_trees.py": "matched",
     "check_intersection_order.py": "matched",
     "check_cut_degree.py": "matched",
-    "check_parity_sat.py": "matched"
+    "check_parity_sat.py": "matched",
+    "check_affine_shortfall.py": "matched",
+    "check_ordered_affine.py": "matched",
+    "check_reciprocal_affine.py": "matched"
   }
 }

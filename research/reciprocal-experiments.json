@@ -1,0 +1,14 @@
+{
+  "symmetric_matrices": 33867,
+  "enumerated_models": 254254,
+  "signed_solver_instances": {
+    "SAT": 377,
+    "UNSAT": 23
+  },
+  "directed_cycle_models": [
+    0,
+    7
+  ],
+  "directed_support_queries": 4165,
+  "multichoice_support_queries": 1024
+}

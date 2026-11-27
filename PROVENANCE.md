@@ -8,6 +8,8 @@ The subsequent [consensus study](research/CUT-DEGREE.md) began with exact ration
 
 The [SAT decision study](research/PARITY-DECISION.md) arose from asking whether independent groups of parity coordinates persist when ordinary variables are fixed. Codex constructed the masked occurrence encoding and derived its shared-variable state count, then tested the solver against exhaustive search and formalized the mathematical core. The study credits the earlier Walsh, trellis, and compilation methods it uses.
 
+The [affine-clause investigation](research/RECIPROCAL-HULL.md) began with one missing independent representative. Codex derived a randomized witness criterion and found that OpenAI Codex and Yichuan Wang had already published the same criterion with a faster algorithm. The related local implementation is a reproduction. Work then shifted to deterministic compilation, prescribed degree parities on induced subgraphs, and a row-perturbation criterion for the directed case. The local graph classification and reduction were developed in this investigation. The notes identify prior methods, what Lean checks, and which claims await independent review. [Earlier randomized algorithm](https://airaxiv.com/papers/pdf/2611.0031/?v=1)
+
 ## Dependencies and third-party material
 
 Two source files reproduce the upstream project's literal and CNF semantics and their imports. They come from the pinned commit below. The local package and its mathematical claims are independent of the upstream project.

@@ -12,13 +12,17 @@ import sys
 
 ROOT = Path(__file__).resolve().parent
 RESEARCH = ROOT / "research"
-MODULES = ("ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder", "CutDegree", "ParityDecision")
+MODULES = ("ClauseIntervals", "ClauseTrees", "ClauseSpan", "IntersectionOrder", "CutDegree",
+           "ParityDecision", "AffineShortfall", "OrderedAffine", "ReciprocalHull")
 EXPERIMENTS = {
     "check_experiments.py": "experiments.json",
     "check_clause_trees.py": "tree-experiments.json",
     "check_intersection_order.py": "order-experiments.json",
     "check_cut_degree.py": "cut-experiments.json",
     "check_parity_sat.py": "parity-experiments.json",
+    "check_affine_shortfall.py": "affine-shortfall-experiments.json",
+    "check_ordered_affine.py": "ordered-affine-experiments.json",
+    "check_reciprocal_affine.py": "reciprocal-experiments.json",
 }
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
 
